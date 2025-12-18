@@ -23,7 +23,7 @@ if(navigator.geolocation){
     })
 }
 
-const map = L.map("map").setView( [0, 0], 17)
+const map = L.map("map").setView( [28.6139, 77.2090], 13)
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:"OpenStreetMap"
@@ -79,4 +79,5 @@ socket.on("user-disconnected", (id)=>{
         delete markers[id]
     }
 })
+
 
