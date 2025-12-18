@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodShare | Sign Up</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+</head>
+<body>
+    <div class="main min-h-screen w-full bg-[url(/images/bgImg.avif)] bg-cover">
+        <div class="nav">
+            <nav class="flex p-10">
+                <ul>
+                    <a href="/"><li class="text-white text-xl font-semibold"><span class="text-2xl font-semibold text-[#FFBF00]">F</span>ood<span class="text-2xl font-semibold text-[#FFBF00]">S</span>hare</li></a>
+                </ul>
+                <ul class="text-white flex items-center">
+                    <a href="/"><li class="px-8 mx-5 font-sans font-semibold hover:underline">Home</li></a>
+                    <a href="/cause"><li class="px-8 mx-5 font-sans font-semibold hover:underline">Cause</li></a>
+                    <a href="/mission"><li class="px-8 mx-5 font-sans font-semibold hover:underline">Out Mission</li></a>
+                    <a href="/contact"><li class="px-8 mx-5 font-sans font-semibold hover:underline">Contacts</li></a>
+                </ul>
+            </nav>
+            <div class="form">
+                <div class="cards flex items-center justify-center py-50">
+                    <div id="c1" class="card1 h-30 w-80 text-black rounded-xl bg-[#DEC4BC] hover:bg-yellow-400 cursor-pointer font-semibold  m-17 flex items-center justify-center text-2xl"><img src="/images/giver.png" class="h-17 w-19" alt="">Are You A Helper..</div>
+                    <div id="c2" class="card2 h-30 w-80 text-black rounded-xl bg-[#DEC4BC] hover:bg-yellow-400 cursor-pointer font-semibold  m-17 flex items-center justify-center text-2xl"><img src="/images/needy.png" class="h-17 w-19" alt="">Are You Needy...</div>
+                </div>
+                <div class="helper text-black font-medium flex flex-col items-center justify-center hidden">
+                    <form action="/help" method="post" class="flex flex-col items-center justify-center">    
+                        <input name="name" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Your Name">
+                        <input name="resName" type="text"class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100"  placeholder="Restaurant Or Dhaba Name">
+                        <input name="phoneno" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Phone Number">
+                        <input name="fType" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Type of Food | VEG or NONVEG |">
+                        <input name="amount" type="number" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Amount of Food In Kgs">
+                        <input type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-2xl m-2 text-white font-semibold " value="Submit">
+                    </form>
+                </div>
+                <div class="needy text-black font-medium flex flex-col items-center justify-center hidden">
+                    <form action="/need" method="post" class="flex flex-col items-center justify-center">
+                        <input name="name" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Your Name">
+                        <input name="orgName" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Your NGO's Name">
+                        <input name="phoneno" type="text" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="Phone Number">
+                        <input name="people" type="number" class="px-4 py-2 outline-none mt-4 bg-[#F5DDC0] rounded-xl w-100" placeholder="How many People You have?">
+                        <input type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-2xl m-2 text-white font-semibold" value="Submit">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/javascripts/signup.js"></script>
+</body>
+</html>

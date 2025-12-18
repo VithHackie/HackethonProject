@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.heading{
+    font-family: 'geom';
+}
+
+/* =========================================
+   Mobile Responsive Media Queries
+   Breakpoint: 768px (Tablets & Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- Navigation Bar Adjustments --- */
+    /* Target the nav flex container */
+    .nav nav {
+        flex-direction: column;      /* Stack logo and links vertically */
+        padding: 1rem !important;    /* Reduce padding */
+        align-items: center;
+    }
+
+    /* Target the links list */
+    .nav ul {
+        flex-direction: column;      /* Stack links vertically */
+        width: 100%;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    /* Target individual links */
+    .nav ul li {
+        margin: 0.5rem 0 !important; /* Add vertical spacing */
+        /* padding: 0 !important;       Remove horizontal padding */
+    }
+
+
+    /* --- Main Layout (Sides) Adjustments --- */
+    /* Target the main container holding text and image */
+    .sides {
+        flex-direction: column-reverse !important; /* Stack items vertically. Reverse puts image on TOP. */
+    }
+
+    /* --- Image Section --- */
+    .image {
+        width: 100% !important;      /* Full width on mobile */
+        min-height: 30vh !important; /* Override 'min-h-screen'. Use 30% viewport height so it doesn't block content. */
+        background-position: center; /* Ensure the image stays centered */
+    }
+
+    /* --- Content Section --- */
+    .content {
+        width: 100% !important;      /* Full width on mobile */
+        padding: 1.5rem !important;  /* Reduce padding from 'p-10' */
+        height: auto !important;     /* Allow height to grow with text */
+    }
+
+    /* --- Typography Adjustments --- */
+    /* Main Headings (Causes of Hunger/Wastage) */
+    .content h1.heading {
+        font-size: 2rem !important;  /* Scale down from 'text-5xl' */
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Sub-headings (Poverty, Infrastructure, etc.) */
+    .content h2 {
+        font-size: 1.5rem !important; /* Scale down from 'text-3xl' */
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    /* Description Text (Spans inside h2) */
+    .content h2 span {
+        font-size: 1rem !important;   /* Scale down from 'text-2xl' */
+        display: block;               /* Make span break to a new line for better readability */
+        margin-top: 0.5rem;
+    }
+}

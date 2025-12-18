@@ -1,0 +1,80 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.first_head{
+    font-family: 'geom';
+}
+
+/* Default global styles can go here */
+
+/* =========================================
+   Mobile Responsive Media Queries
+   Breakpoint: 768px (Standard Tablets/Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* --- Navigation Bar Adjustments --- */
+    /* Target the nav tag inside the .nav div */
+    .main{
+        background-image: url('/images/bg.jpeg');
+    }
+
+    .nav nav {
+        flex-direction: column;      /* Stack logo and links vertically */
+        padding: 1.5rem !important;  /* Override desktop 'p-10' */
+        align-items: center;         /* Center align content */
+    }
+
+    /* Target the list containing links */
+    .nav ul {
+        flex-direction: column;      /* Stack links vertically */
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* Target individual list items */
+    .nav ul li {
+        margin: 0.5rem 0 !important; /* Override desktop 'mx-5' */
+        /* padding: 0.5rem 0 !important;Reduce padding */
+        text-align: center;
+    }
+
+    /* Adjust the specific "Sign Up" button inside nav if needed */
+    .nav ul a li.bg-indigo-500 {
+        width: 100%;
+        margin-top: 10px !important;
+    }
+
+
+    /* --- Hero/Quote Section Adjustments --- */
+    /* Target the quote container */
+    .quote {
+        /* Override desktop 'py-50' (200px) and 'p-30' (120px) */
+        padding: 4rem 1.5rem !important; 
+        text-align: center;          /* Center text for mobile */
+    }
+
+    /* Adjust Main Heading (H1) */
+    .quote h1 {
+        /* Override desktop 'text-5xl' */
+        font-size: 2rem !important;  
+        line-height: 1.2;
+    }
+
+    /* Adjust Sub Heading (H2) */
+    .quote h2 {
+        /* Override desktop 'text-6xl' */
+        font-size: 1.5rem !important; 
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* --- Button Adjustments --- */
+    .quote a {
+        display: inline-block;       /* Ensure buttons sit correctly */
+        font-size: 1rem !important;  /* Scale down button text */
+        margin: 0.5rem !important;   /* Adjust margins for stacking */
+        width: 100%;                 /* Make buttons full width on small screens */
+        max-width: 300px;
+    }
+}

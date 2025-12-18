@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.main{
+    font-family: 'geom';
+}
+/* =========================================
+   Mobile Responsive Media Queries
+   Breakpoint: 768px (Tablets & Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- Navigation Bar Adjustments --- */
+    .nav nav {
+        flex-direction: column;      /* Stack logo and links vertically */
+        padding: 1.5rem !important;  /* Override desktop 'p-10' */
+        align-items: center;
+    }
+
+    .nav ul {
+        flex-direction: column;      /* Stack links vertically */
+        width: 100%;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .nav ul li {
+        margin: 0.5rem 0 !important; /* Add vertical spacing */
+        /* padding: 0 !important;       Remove horizontal padding */
+    }
+
+
+    /* --- Main Layout (Sides) Adjustments --- */
+    /* Target the container holding text and image */
+    .sides {
+        /* Switch from side-by-side to stacked. 
+           'column-reverse' puts the image (2nd div) on TOP of the text (1st div) */
+        flex-direction: column-reverse !important; 
+    }
+
+    /* --- Image Section --- */
+    .image {
+        width: 100% !important;      /* Full width on mobile */
+        min-height: 30vh !important; /* Limit height to 30% of screen (don't cover full mobile screen) */
+        background-position: center; 
+    }
+
+    /* --- Content Section --- */
+    .content {
+        width: 100% !important;      /* Full width on mobile */
+        padding: 1.5rem !important;  /* Reduce padding from 'p-10' */
+        height: auto !important;     /* Let height grow with text content */
+    }
+
+    /* --- Typography Adjustments --- */
+    
+    /* Main 'Our Mission' Heading */
+    .content h1 {
+        font-size: 2.5rem !important; /* Scale down from 'text-6xl' */
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Sub-headings (Mission Statement) */
+    .content h2.text-4xl {
+        font-size: 1.5rem !important; /* Scale down from 'text-4xl' */
+        line-height: 1.3;
+        text-align: justify;          /* Better readability for blocks of text */
+    }
+
+    /* List Items (We aim to...) */
+    .content h2.text-3xl {
+        font-size: 1.25rem !important; /* Scale down from 'text-3xl' */
+        margin-bottom: 0.5rem;         /* Add spacing between points */
+    }
+
+    /* Ensure line breaks (<br>) don't create massive gaps on mobile */
+    .content br {
+        display: block; 
+        content: ""; 
+        margin-top: 0.5rem; 
+    }
+}

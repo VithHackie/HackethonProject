@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+.main{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/images/bgImg.jpeg");
+    background-size: cover;
+    flex-direction: column;
+}
+#map{
+    min-height: 80vh;
+    width: 80%;
+    padding: 100px;
+}
+.leaflet-tooltip {
+    background: black;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 4px 6px;
+}
+
+/* --- Base Styles & Desktop Defaults --- */
+body {
+    /* Added dark background so 'text-white' is visible */
+    background-color: #1e293b; /* Slate-800 to match typical dark themes */
+    margin: 0;
+    padding: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    overflow-x: hidden;
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Leaflet Map Default (Desktop) */
+#map {
+    height: 600px;
+    width: 90%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 2px solid #475569;
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+
+/* --- Media Queries --- */
+
+/* Tablet & Small Laptops (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    h1 {
+        /* Override Tailwind 'text-5xl' */
+        font-size: 2.25rem !important; 
+        padding: 1.5rem !important;
+    }
+
+    #map {
+        height: 500px;
+        width: 95%;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    
+    .main {
+        /* Ensure layout fills the screen exactly */
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* 1. Adjust the Main Heading */
+    h1 {
+        /* Drastically reduce size from text-5xl to fit mobile */
+        font-size: 1.5rem !important; 
+        padding: 1rem !important; /* Reduce 'p-10' */
+        text-align: center;
+        width: 100%;
+    }
+
+    /* 2. Adjust the Sub-text (Span) */
+    h1 span {
+        /* Reduce size from text-3xl */
+        font-size: 1rem !important;
+        display: block; /* Force it to a new line */
+        margin-top: 0.5rem;
+        color: #fbbf24; /* Amber color to make the warning pop */
+    }
+
+    /* 3. Map Adjustments for Mobile */
+    #map {
+        width: 100%;
+        /* Flex grow allows map to take all remaining height after the text */
+        flex-grow: 1; 
+        height: auto; 
+        margin: 0;
+        border-radius: 1.5rem 1.5rem 0 0; /* Only round top corners */
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
+}

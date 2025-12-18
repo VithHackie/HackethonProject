@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.cards{
+    font-family: 'geom';
+}
+input[type=number]::-webkit-inner-spin-button, 
+.helper input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.helper input[type=submit]{
+    font-family: 'geom';
+}
+/* =========================================
+   Mobile Responsive Media Queries
+   Breakpoint: 768px (Tablets & Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- Navigation Bar Adjustments --- */
+    /* Stack logo and links vertically */
+    .nav nav {
+        flex-direction: column;
+        padding: 1.5rem !important;  /* Override desktop 'p-10' [cite: 9] */
+        align-items: center;
+    }
+
+    /* Stack the links vertically */
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    /* Reduce spacing between links */
+    .nav ul li {
+        margin: 0.5rem 0 !important; /* Override desktop 'mx-5' [cite: 10] */
+        padding: 0.5rem 0 !important;/* Override desktop 'px-8' [cite: 10] */
+    }
+
+    /* --- Card Selection Section --- */
+    /* Target the container holding the two choice cards */
+    .cards {
+        flex-direction: column;      /* Stack cards vertically instead of side-by-side */
+        padding-top: 2rem !important;    /* Reduce huge 'py-50' (200px)  */
+        padding-bottom: 2rem !important;
+    }
+
+    /* Target the individual cards (Helper/Needy) */
+    #c1, #c2 {
+        width: 90% !important;       /* Override fixed 'w-80' so it fits mobile screens */
+        margin: 1rem 0 !important;   /* Reduce huge 'm-17' (68px) margin  */
+    }
+
+    /* --- Form Input Adjustments --- */
+    /* Target the container for the forms */
+    .helper, .needy {
+        width: 100%;
+        padding: 0 1rem;             /* Add side padding so it doesn't touch edges */
+    }
+
+    /* Target the form inputs */
+    input[type="text"],
+    input[type="number"] {
+        width: 100% !important;      /* Override 'w-100' to prevent overflow  */
+        box-sizing: border-box;      /* Ensure padding is included in width */
+    }
+}
