@@ -1,4 +1,5 @@
 const socket = io();
+
 const customIcon = L.icon({
     iconUrl: "/images/location.png",     // your image
     iconSize: [40, 40],
@@ -6,12 +7,10 @@ const customIcon = L.icon({
     tooltipAnchor: [0, -40],
 });
 
-console.log(phoneno)
-
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition((pos)=>{
         const {latitude, longitude} = pos.coords
-        socket.emit("send-helper-location", {latitude, longitude, user, restaurant, phoneno, food, amount})
+        socket.emit("send-location-needer", {latitude, longitude})
         console.log(latitude + " " + longitude)
     }, (err)=>{
         console.error(err);
@@ -25,12 +24,12 @@ if(navigator.geolocation){
 
 const map = L.map("map").setView( [0, 0], 17)
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution:"OpenStreetMap"
 }).addTo(map)
 
 const markers = {};
-
+firstimeLoad = true
 socket.on("recieve-location-helper", (data)=>{
     const {id, latitude, longitude, user, restaurant, phoneno, food, amount} = data;
     map.setView([latitude, longitude])
@@ -38,9 +37,7 @@ socket.on("recieve-location-helper", (data)=>{
         markers[id].setLatLng([latitude, longitude])
 
     }else{
-        markers[id] = L.marker([latitude, longitude], {
-            icon : customIcon
-        })
+        markers[id] = L.marker([latitude, longitude], {icon : customIcon})
             .addTo(map)
             .bindTooltip(`Name - ${user}<br>Place Name - ${restaurant} <br> Phone No. - ${phoneno} <br> Food Type - ${food} <br>Amount - ${amount}Kgs`, {
                 permanent : true,
@@ -49,8 +46,29 @@ socket.on("recieve-location-helper", (data)=>{
             })
     }
 })
+
+// Add to help.js and need.js
+
+socket.on("load-existing-helpers", (helpers) => {
+    helpers.forEach((data) => {
+        const {id, latitude, longitude, user, restaurant, phoneno, food, amount} = data;
+        
+        // Only add if marker doesn't exist yet
+        if(!markers[id]){
+            markers[id] = L.marker([latitude, longitude], {icon : customIcon})
+            .addTo(map)
+            .bindTooltip(`Name - ${user}<br>Place Name - ${restaurant} <br> Phone No. - ${phoneno} <br> Food Type - ${food} <br>Amount - ${amount}Kgs`, {
+                permanent : true,
+                direction : 'top',
+                offset: [0, -10]
+            });
+        }
+    });
+});
+
 socket.on("recieve-location-needer", (data)=>{
-    window.location.reload()  
+    const {id, latitude, longitude} = data
+    map.setView([latitude, longitude])
 })
 
 socket.on("user-disconnected", (id)=>{
@@ -58,4 +76,5 @@ socket.on("user-disconnected", (id)=>{
         map.removeLayer(markers[id])
         delete markers[id]
     }
+    // window.location.reload()
 })
