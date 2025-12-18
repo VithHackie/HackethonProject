@@ -37,7 +37,7 @@ let activeHelper = {}
 
 io.on("connection", (socket)=>{
     
-    socket.emit("load-existing-helper", Object.values(activeHelper))
+    socket.emit("load-existing-helpers", Object.values(activeHelper))
 
     socket.on("send-helper-location", (data)=>{
         activeHelper[socket.id] = {id : socket.id, ...data}
@@ -127,4 +127,5 @@ app.post("/need", async (req, res)=>{
     }
 
 })
+
 
