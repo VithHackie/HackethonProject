@@ -24,7 +24,7 @@ if(navigator.geolocation){
 
 const map = L.map("map").setView( [0, 0], 17)
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution:"OpenStreetMap"
 }).addTo(map)
 
@@ -45,9 +45,26 @@ socket.on("recieve-location-helper", (data)=>{
                 offset: [0, -10]
             })
     }
-    
-
 })
+
+// Add to help.js and need.js
+
+socket.on("load-existing-helpers", (helpers) => {
+    helpers.forEach((data) => {
+        const {id, latitude, longitude, user, restaurant, phoneno, food, amount} = data;
+        
+        // Only add if marker doesn't exist yet
+        if(!markers[id]){
+            markers[id] = L.marker([latitude, longitude], {icon : customIcon})
+            .addTo(map)
+            .bindTooltip(`Name - ${user}<br>Place Name - ${restaurant} <br> Phone No. - ${phoneno} <br> Food Type - ${food} <br>Amount - ${amount}Kgs`, {
+                permanent : true,
+                direction : 'top',
+                offset: [0, -10]
+            });
+        }
+    });
+});
 
 socket.on("recieve-location-needer", (data)=>{
     const {id, latitude, longitude} = data
@@ -60,5 +77,4 @@ socket.on("user-disconnected", (id)=>{
         delete markers[id]
     }
     // window.location.reload()
-
 })
