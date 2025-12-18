@@ -24,7 +24,7 @@ if(navigator.geolocation){
 
 const map = L.map("map").setView( [0, 0], 17)
 
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:"OpenStreetMap"
 }).addTo(map)
 
@@ -60,4 +60,5 @@ socket.on("user-disconnected", (id)=>{
         delete markers[id]
     }
     // window.location.reload()
+
 })
