@@ -32,7 +32,7 @@ const markers = {};
 firstimeLoad = true
 socket.on("recieve-location-helper", (data)=>{
     const {id, latitude, longitude, user, restaurant, phoneno, food, amount} = data;
-    map.setView([latitude, longitude])
+    // map.setView([latitude, longitude])
     if(markers[id]){
         markers[id].setLatLng([latitude, longitude])
 
@@ -78,3 +78,4 @@ socket.on("user-disconnected", (id)=>{
     }
     // window.location.reload()
 })
+
