@@ -33,14 +33,23 @@ app.use(express.json())
 app.set("view engine", "ejs")
 app.use(express.static(__dirname+"/public"))
 
+let activeHelper = {}
+
 io.on("connection", (socket)=>{
+    
+    socket.emit("load-existing-helper", Object.values(activeHelper))
+
     socket.on("send-helper-location", (data)=>{
+        activeHelper[socket.id] = {id : socket.id, ...data}
         io.emit("recieve-location-helper", {id : socket.id, ...data})
     })
     socket.on("send-location-needer", (data)=>{
         io.emit("recieve-location-needer", {id : socket.id, ...data})
     })
     socket.on("disconnect", ()=>{
+        if(activeHelper[socket.id]){
+            delete activeHelper[socket.id];
+        }
         io.emit("user-disconnected", socket.id)
     })
     console.log("connected")
