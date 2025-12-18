@@ -24,7 +24,7 @@ if(navigator.geolocation){
 
 const map = L.map("map").setView( [28.6139, 77.2090], 13)
 
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:"OpenStreetMap"
 }).addTo(map)
 
@@ -78,5 +78,6 @@ socket.on("user-disconnected", (id)=>{
     }
     // window.location.reload()
 })
+
 
 
